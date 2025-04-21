@@ -7,7 +7,9 @@ export default function MainLayout() {
   return (
     <>
       <NavbarComp/>
+      <div className="container">
       <Outlet/>
+      </div>
       <Footer/>
     </>
   )
