@@ -68,7 +68,7 @@ export default function Login() {
 
   return (
     <>
-    <div className="container md:w-2/4 m-auto">      
+    <div className="container md:w-2/5 m-auto">      
       <div className="  py-5 px-10 border-1 shadow-md">
       <form action="">
       <div className="grid gap-4">
