@@ -1,5 +1,6 @@
 import { Button, Input } from '@heroui/react'
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 export default function Login() {
   const [isVisible, setIsVisible] = React.useState(false);
@@ -95,9 +96,12 @@ export default function Login() {
       variant="underlined"
     />
 
-      <Button className='mt-4' color="primary">Login</Button>;
+      <Button className='mt-4' color="primary">Login</Button>
       </div>
       </form>
+      <div className="pt-4">
+        Need an account? <Link className='text-blue-700 underline' to={'/signup'}>register</Link>
+      </div>
       </div>     
     </div>
     </>
