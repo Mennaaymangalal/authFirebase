@@ -98,7 +98,10 @@ export default function Login() {
 
       <Button className='mt-4' color="primary">Login</Button>
       </div>
-      </form>      
+      </form>   
+      <div className="pt-4">
+       <Link className='text-blue-700 underline' to={'/forgetpassword'}>Forget Password</Link>
+      </div>     
       </div> 
       <div className="pt-4">
         Need an account? <Link className='text-blue-700 underline' to={'/signup'}>Register</Link>
