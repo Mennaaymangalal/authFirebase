@@ -69,7 +69,7 @@ export default function Login() {
   return (
     <>
     <div className="container">      
-      <div className="md:w-2/4 m-auto pb-10 pt-20 px-14 border-1 shadow-md">
+      <div className="md:w-2/4 m-auto  py-5 px-10 border-1 shadow-md">
       <form action="">
       <div className="grid gap-4">
       <h1 className='font-bold text-2xl '>Login Now!</h1>
@@ -100,7 +100,7 @@ export default function Login() {
       </div>
       </form>
       <div className="pt-4">
-        Need an account? <Link className='text-blue-700 underline' to={'/signup'}>register</Link>
+        Need an account? <Link className='text-blue-700 underline' to={'/signup'}>Register</Link>
       </div>
       </div>     
     </div>
