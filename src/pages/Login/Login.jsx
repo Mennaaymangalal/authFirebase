@@ -68,8 +68,8 @@ export default function Login() {
 
   return (
     <>
-    <div className="container">      
-      <div className="md:w-2/4 m-auto  py-5 px-10 border-1 shadow-md">
+    <div className="container md:w-2/4 m-auto">      
+      <div className="  py-5 px-10 border-1 shadow-md">
       <form action="">
       <div className="grid gap-4">
       <h1 className='font-bold text-2xl '>Login Now!</h1>
@@ -98,11 +98,11 @@ export default function Login() {
 
       <Button className='mt-4' color="primary">Login</Button>
       </div>
-      </form>
+      </form>      
+      </div> 
       <div className="pt-4">
         Need an account? <Link className='text-blue-700 underline' to={'/signup'}>Register</Link>
-      </div>
-      </div>     
+      </div>    
     </div>
     </>
   )

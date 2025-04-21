@@ -72,9 +72,9 @@ export default function SignUp() {
 
   return (
     <>
-    <div className="container">      
-      <div className="md:w-2/4 m-auto py-5 px-10 border-1 shadow-md">
-      <form action="">
+    <div className="container md:w-2/4 m-auto">      
+      <div className=" py-5 px-10 border-1 shadow-md">
+      <form >
       <div className="grid gap-4">
       <h1 className='font-bold text-2xl '>Register Now!</h1>
       <Input name='email'  label="Email" placeholder="Enter your email" type="email" variant={'underlined'} />
@@ -124,11 +124,11 @@ export default function SignUp() {
 
       <Button className='mt-4' color="primary">Register</Button>
       </div>
-      </form>
+      </form>      
+      </div>  
       <div className="pt-4">
         Aready have an account? <Link className='text-blue-700 underline' to={'/'}>Login</Link>
-      </div>
-      </div>     
+      </div>   
     </div>
     </>
   )
