@@ -5,6 +5,7 @@ import Login from "./pages/Login/Login";
 import SignUp from "./pages/SignUp/SignUp";
 import NotFound from "./pages/NotFound/NotFound";
 import ForgetPassword from "./pages/ForgetPassword/ForgetPassword";
+import AuthContextProvider from "./Contects/AuthContextProvider";
 
 function App() {
   const router = createBrowserRouter([
@@ -17,9 +18,12 @@ function App() {
   ])
   return (
     <>
-     <HeroUIProvider>
+    <AuthContextProvider>
+    <HeroUIProvider>
      <RouterProvider router={router}></RouterProvider>
-     </HeroUIProvider>     
+     </HeroUIProvider>   
+    </AuthContextProvider>
+      
     </>
   )
 }
