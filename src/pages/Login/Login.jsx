@@ -68,7 +68,7 @@ export default function Login() {
   return (
     <>
     <div className="container">      
-      <div className="md:w-2/4 m-auto py-24 px-14 border-1 shadow-md">
+      <div className="md:w-2/4 m-auto pb-10 pt-20 px-14 border-1 shadow-md">
       <form action="">
       <div className="grid gap-4">
       <h1 className='font-bold text-2xl '>Login Now!</h1>
