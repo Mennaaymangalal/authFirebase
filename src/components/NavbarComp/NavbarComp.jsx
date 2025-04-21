@@ -15,25 +15,26 @@ import { Link, NavLink } from "react-router-dom";
 export default function NavbarComp() {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
-    const menuItems = [
-      "Login",
-      "SignUp",       
-    ];
+    // const menuItems = [
+    //   "Login",
+    //   "SignUp",       
+    // ];
   
   return (
     <>
          <Navbar  isBordered isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}>
       <NavbarContent>
-        <NavbarMenuToggle
+
+        {/* <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           className="sm:hidden"
-        />
+        /> */}
         <NavbarBrand>         
           <p className="font-bold text-inherit">LOGO</p>
         </NavbarBrand>
       </NavbarContent>
 
-      <NavbarContent className="hidden sm:flex gap-4" justify="center">
+      {/* <NavbarContent className="hidden sm:flex gap-4" justify="center">
 
       {
         menuItems.map((item , index)=>(
@@ -49,7 +50,9 @@ export default function NavbarComp() {
         ))
       }
      
-      </NavbarContent>
+      </NavbarContent> */}
+
+
       <NavbarContent justify="end">
         <NavbarItem >
           <Link to={'/'} >Login</Link>
@@ -64,7 +67,7 @@ export default function NavbarComp() {
       </NavbarContent>
 
 
-      <NavbarMenu>
+      {/* <NavbarMenu>
         {menuItems.map((item, index) => (
           <NavbarMenuItem onClick={() => setIsMenuOpen(false)} key={`${item}-${index}`}>
             <NavLink
@@ -78,7 +81,8 @@ export default function NavbarComp() {
             </NavLink>
           </NavbarMenuItem>
         ))}
-      </NavbarMenu>
+      </NavbarMenu> */}
+
     </Navbar>
     </>
   )
