@@ -1,6 +1,6 @@
 import { Alert, Button, Input } from '@heroui/react'
 import React, { useRef, useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../Contects/AuthContextProvider';
 
 export default function SignUp() {
@@ -75,23 +75,31 @@ export default function SignUp() {
  const [error , setError] = useState("")
  const [loading , setLoading] = useState(false)
 
- const emailRef = useRef()
- const passwordRef = useRef()
- const repasswordRef = useRef()
+ const [email, setEmail] = useState("");
+const [password, setPassword] = useState("");
+const [repassword, setRepassword] = useState("");
 
-  const {signup} = useAuth()
-  const handleSubmit = async (e) =>{
-    e.preventDefault()
-    try{
-      setError("")
-      setLoading(true)
-      await signup()
-    } catch{
-     setError("Faild to create an account")
-    }
-    setLoading(false)
+const navigate = useNavigate()
+
+const {signup } = useAuth()
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  
+  if (password !== repassword) {    
+    return setError("Password and Repassword Must be the Same");
   }
- 
+
+  try {    
+    setError("");
+    setLoading(true);
+    await signup(email, password);
+    navigate("/home")   
+  } catch (err) {   
+    setError("Signup failed: " + err.message);
+  }
+  setLoading(false);
+};
+
 
 
   return (
@@ -102,8 +110,8 @@ export default function SignUp() {
       <div className="grid gap-4">
       <h1 className='font-bold text-2xl '>Register Now!</h1>
       {error && <Alert color='danger'>{error}</Alert>}
-      <Input name='email'  label="Email" placeholder="Enter your email" type="email" variant={'underlined'} />
-      <Input
+      <Input   value={email}  onChange={(e) => setEmail(e.target.value)} name='email'  label="Email" placeholder="Enter your email" type="email" variant={'underlined'} />
+      <Input  value={password} onChange={(e) => setPassword(e.target.value)}
       className=""
       endContent={
         <button
@@ -125,7 +133,7 @@ export default function SignUp() {
       variant="underlined"
     />
 
-     <Input
+     <Input  value={repassword} onChange={(e) => setRepassword(e.target.value)}
       className=""
       endContent={
         <button
@@ -147,7 +155,7 @@ export default function SignUp() {
       variant="underlined"
     />
 
-      <Button className='mt-4' color="primary" disabled={loading}>Register</Button>
+      <Button type='submit' className='mt-4' color="primary" disabled={loading}>Register</Button>
       </div>
       </form>      
       </div>  

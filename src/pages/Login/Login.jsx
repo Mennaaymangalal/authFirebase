@@ -96,7 +96,7 @@ export default function Login() {
       variant="underlined"
     />
 
-      <Button className='mt-4' color="primary">Login</Button>
+      <Button type='submit' className='mt-4' color="primary">Login</Button>
       </div>
       </form>   
       <div className="pt-4">

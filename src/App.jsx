@@ -6,12 +6,14 @@ import SignUp from "./pages/SignUp/SignUp";
 import NotFound from "./pages/NotFound/NotFound";
 import ForgetPassword from "./pages/ForgetPassword/ForgetPassword";
 import AuthContextProvider from "./Contects/AuthContextProvider";
+import Home from "./pages/Home/Home";
 
 function App() {
   const router = createBrowserRouter([
     {path: '/' , element :<MainLayout/>,children:[
       {index:true , element:<Login/>},
       {path: 'signup' , element:<SignUp/>},
+      {path: 'home' , element:<Home/>},
       {path: 'forgetpassword' , element:<ForgetPassword/>},
       {path: '*' , element:<NotFound/>},
     ]}

@@ -14,7 +14,7 @@ export default function ForgetPassword() {
       <Input name='email'  label="Email" placeholder="Enter your email" type="email" variant={'underlined'} />
     
 
-      <Button className='mt-4' color="primary">Reset Password</Button>
+      <Button type='submit' className='mt-4' color="primary">Reset Password</Button>
       </div>
       </form>   
       <div className="pt-4">

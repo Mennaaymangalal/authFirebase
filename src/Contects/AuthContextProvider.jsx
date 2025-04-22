@@ -8,11 +8,11 @@ const AuthContext = createContext()
 
 export default function AuthContextProvider({children}) {
 
-   const [CurrentUser , setCurrentUser] = useState()
+   const [currentUser , setCurrentUser] = useState()
    const [isLoading , setIsLoading] = useState(true)
 
-   const signup = (email , password)=>{
-   createUserWithEmailAndPassword(auth , email , password)
+   const signup = (email , password)=>{  
+    return createUserWithEmailAndPassword(auth , email , password)
    }
      
    useEffect(()=>{
@@ -27,7 +27,7 @@ export default function AuthContextProvider({children}) {
   
   return (
     <>
-    <AuthContext.Provider value={{ CurrentUser , signup ,isLoading }}>
+    <AuthContext.Provider value={{ currentUser , signup ,isLoading }}>
     {!isLoading && children}
     </AuthContext.Provider>     
     </>
