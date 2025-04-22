@@ -1,6 +1,7 @@
-import { Button, Input } from '@heroui/react'
-import React from 'react'
+import { Alert, Button, Input } from '@heroui/react'
+import React, { useRef, useState } from 'react'
 import { Link } from 'react-router-dom';
+import { useAuth } from '../../Contects/AuthContextProvider';
 
 export default function SignUp() {
   const [isVisible, setIsVisible] = React.useState(false);
@@ -70,13 +71,37 @@ export default function SignUp() {
     );
   };
 
+
+ const [error , setError] = useState("")
+ const [loading , setLoading] = useState(false)
+
+ const emailRef = useRef()
+ const passwordRef = useRef()
+ const repasswordRef = useRef()
+
+  const {signup} = useAuth()
+  const handleSubmit = async (e) =>{
+    e.preventDefault()
+    try{
+      setError("")
+      setLoading(true)
+      await signup()
+    } catch{
+     setError("Faild to create an account")
+    }
+    setLoading(false)
+  }
+ 
+
+
   return (
     <>
     <div className="container md:w-2/5 m-auto">      
       <div className=" py-5 px-10 border-1 shadow-md">
-      <form >
+      <form onSubmit={handleSubmit} >
       <div className="grid gap-4">
       <h1 className='font-bold text-2xl '>Register Now!</h1>
+      {error && <Alert color='danger'>{error}</Alert>}
       <Input name='email'  label="Email" placeholder="Enter your email" type="email" variant={'underlined'} />
       <Input
       className=""
@@ -122,7 +147,7 @@ export default function SignUp() {
       variant="underlined"
     />
 
-      <Button className='mt-4' color="primary">Register</Button>
+      <Button className='mt-4' color="primary" disabled={loading}>Register</Button>
       </div>
       </form>      
       </div>  
