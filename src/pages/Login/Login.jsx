@@ -1,6 +1,7 @@
-import { Button, Input } from '@heroui/react'
-import React from 'react'
-import { Link } from 'react-router-dom';
+import { Alert, Button, Input } from '@heroui/react'
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../Contects/AuthContextProvider';
 
 export default function Login() {
   const [isVisible, setIsVisible] = React.useState(false);
@@ -66,15 +67,42 @@ export default function Login() {
     );
   };
 
+  
+   const [error , setError] = useState("")
+   const [loading , setLoading] = useState(false)
+  
+   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  
+  
+  const navigate = useNavigate()
+  
+  const {signin } = useAuth()
+  const handleSubmit = async (e) => {
+    e.preventDefault();    
+     
+    try {    
+      setError("");
+      setLoading(true);
+      await signin(email, password);
+      navigate("/home")   
+    } catch (err) {   
+      setError("Failed to Login" + err.message);
+    }
+    setLoading(false);
+  };
+  
+
   return (
     <>
     <div className="container md:w-2/5 m-auto">      
       <div className="  py-5 px-10 border-1 shadow-md">
-      <form action="">
+      <form onSubmit={handleSubmit}>
       <div className="grid gap-4">
       <h1 className='font-bold text-2xl '>Login Now!</h1>
-      <Input name='email'  label="Email" placeholder="Enter your email" type="email" variant={'underlined'} />
-      <Input
+      {error && <Alert color='danger'>{error}</Alert>}
+      <Input value={email}  onChange={(e) => setEmail(e.target.value)} name='email'  label="Email" placeholder="Enter your email" type="email" variant={'underlined'} />
+      <Input value={password}  onChange={(e) => setPassword(e.target.value)}
       className=""
       endContent={
         <button
@@ -96,7 +124,7 @@ export default function Login() {
       variant="underlined"
     />
 
-      <Button type='submit' className='mt-4' color="primary">Login</Button>
+      <Button disabled={loading} type='submit' className='mt-4' color="primary">Login</Button>
       </div>
       </form>   
       <div className="pt-4">
