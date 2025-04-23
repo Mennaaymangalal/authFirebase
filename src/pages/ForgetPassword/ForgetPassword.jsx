@@ -1,6 +1,6 @@
 import { Alert, Button, Input } from '@heroui/react'
 import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useAuth } from '../../Contects/AuthContextProvider';
 
 export default function ForgetPassword() {
@@ -9,7 +9,6 @@ export default function ForgetPassword() {
   const [loading , setLoading] = useState(false)
  
   const [email, setEmail] = useState("");
-
   const [message, setMessage] = useState("");
  
  
